@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">LicenseTest</string>
+
+    <string name="login">Login</string>
+    <string name="default_login">default login</string>
+    <string name="signup">No account yet? Create one</string>
+    <string name="Register">Register</string>
+    <string name="send">Send</string>
+    <string name="Scan">Scan</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+
+    <string name="username">Username</string>
+    <string name="default_username1">jonas123</string>
+    <string name="default_username2">petras777</string>
+    <string name="username_hint">Only letters a-z, A-Z allowed!</string>
+    <string name="First_Name">First Name</string>
+    <string name="Second_Name">Surname</string>
+    <string name="Email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="default_password">asdag</string>
+    <string name="Password_retype">Re-type Password</string>
+    <string name="Pass_not_match">Passwords don\'t match!</string>
+    <string name="pass_hint">Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters.</string>
+    <string name="seller">Seller</string>
+    <string name="buyer">Buyer</string>
+    <string name="service_provided">Service provided:</string>
+    <string name="default_service">Food</string>
+    <string name="Amount_Paid">Amount Paid:   £</string>
+    <string name="default_amount">699</string>
+    <string name="Client_info">Client Information Missing!</string>
+    <string name="From">From:</string>
+    <string name="Shop">Shop:</string>
+    <string name="Company">Company:</string>
+
+    <string name="scs_answ_que">Successfully answered questions.</string>
+    <string name="learn">LEARN...</string>
+    <string name="theory">THEORY TEST.</string>
+    <string name="categories">CATEGORIES</string>
+    <string name="example4">ABCWFW</string>
+    <string name="example5">aaa@gmail.com</string>
+    <string name="example6">ABCKWNI</string>
+    <string name="example7">ABCLININ</string>
+    <string name="ERR_Email">Not a valid E-mail address</string>
+    <string name="COMP_Name">Company name (Optional)</string>
+</resources>

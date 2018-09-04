@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/chz_quiz_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/holo_orange_light"
+        android:layout_marginBottom="30dp"
+        android:text="Mock Exam"/>
+    <Button
+        android:id="@+id/chz_quiz_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="Quiz two players"/>
+    <Button
+        android:id="@+id/chz_quiz_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/holo_red_light"
+        android:layout_marginBottom="30dp"
+        android:text="Quiz"/>
+    <Button
+        android:id="@+id/chz_quiz_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/holo_purple"
+        android:text="Quiz four"/>
+
+
+
+
+</LinearLayout>

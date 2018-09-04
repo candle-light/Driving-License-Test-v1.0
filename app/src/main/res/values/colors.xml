@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#AAAAAA</color>
+    <color name="colorPrimary1">#AAAAAA</color>
+    <color name="colorPrimary2">#BBBBBB</color>
+    <color name="colorPrimary3">#CCCCCC</color>
+    <color name="colorPrimary4">#DDDDDD</color>
+    <color name="colorPrimary5">#EEEEEE</color>
+    <color name="colorPrimary6">#FFFFFF</color>
+    <color name="colorPrimary7">#3F51B5</color>
+    <color name="colorPrimary8">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="greymetal">#a3a8ac</color>
+    <color name="greymetal2">#81878c</color>
+    <color name="greymetal3">#5f6468</color>
+    <color name="greymetal4">#83898c</color>
+    <color name="acpt_green1">#50af00</color>
+    <color name="salad_green1">#1f9e2e</color>
+    <color name="dcln_red1">#D92626</color>
+    <color name="buttn_border">#23211A</color>
+</resources>
