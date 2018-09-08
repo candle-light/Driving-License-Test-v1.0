@@ -184,8 +184,8 @@ public class MainActivity extends AppCompatActivity {
             final AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
             //mBuilder.setTitle("Choose Language..");
             View mView = getLayoutInflater().inflate(R.layout.dialog_level_guide, null);
-            final TextView mainMessage = mView.findViewById(R.id.lvl_guide_info);
-
+             final TextView mainMessage = mView.findViewById(R.id.lvl_guide_info);
+            final TextView lvlProgressBar = mView.findViewById(R.id.lvl_progress_bar);
 
             mBuilder.setView(mView);
 
@@ -208,10 +208,11 @@ public class MainActivity extends AppCompatActivity {
             });*/
 
             alertDialog.show();
-            new CountDownTimer(10000, 1000) {
+            new CountDownTimer(20000, 100) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     mainMessage.setText("MEssage" +(millisUntilFinished/1000));
+
                     //alertDialog.setMessage("00:"+ (millisUntilFinished/1000));
                 }
 

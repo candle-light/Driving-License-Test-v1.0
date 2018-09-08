@@ -53,6 +53,20 @@
     <string name="level">Lvl.</string>
     <string name="default_level">0</string>
     <string name="lvl_guide_info_1">Thanks for choosing our application&#x2026;</string>
+    <string name="lvl_guide_info_2">Thanks for choosing our application&#x2026;</string>
+    <string name="lvl_guide_info_3">Thanks for choosing our application&#x2026;</string>
+    <string name="lvl_guide_info_4">Thanks for choosing our application&#x2026;</string>
+    <string name="lvl_guide_info_5">Thanks for choosing our application&#x2026;</string>
+    <string name="lvl_guide_info_6">Thanks for choosing our application&#x2026;</string>
+    <string name="lvl_guide_info_7">Thanks for choosing our application&#x2026;</string>
+    <string name="lvl_guide_info_8">Thanks for choosing our application&#x2026;</string>
+
+
+
+
+
+
+
     <string name="question_descrp">question description</string>
     <string name="def_question">default question</string>
     <string name="def_answer">default answer</string>
