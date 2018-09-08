@@ -10,11 +10,17 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,31 +38,39 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Locale;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
-        private Socket socket;
-        private static final int SERVER_PORT = 22222;
-        private static final String SERVER_IP = "62.75.189.139";
+    private Socket socket;
+    private static final int SERVER_PORT = 22222;
+    private static final String SERVER_IP = "62.75.189.139";
 
-        private TextView txtlogin, txtpassword;
-        private String username,  id, def_lang = "en";
-        private Uri imageUri;
-        private Button theory, create;
+    private TextView txtlogin, txtpassword;
+    private String username, id, def_lang = "en";
+    private Uri imageUri;
+    private Button theory, create;
+    private ImageButton btnProfile;
 
-        private int Msg_Code = 0, Err_Msg_Code = 0, Scs_Msg_Code = 0;
+    private int Msg_Code = 0, Err_Msg_Code = 0, Scs_Msg_Code = 0;
 
-        private static final String SAVED_INSTANCE_URI = "uri";
-        private static final String SAVED_INSTANCE_RESULT = "result";
+    private static final String SAVED_INSTANCE_URI = "uri";
+    private static final String SAVED_INSTANCE_RESULT = "result";
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            //loadLocale();
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //loadLocale();
 
-        theory = (Button) findViewById(R.id.btn_test);
+        setContentView(R.layout.activity_main);
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+       // if (isFirstRun()) {
+            Toast.makeText(MainActivity.this, "Let's do something on first run", Toast.LENGTH_SHORT).show();
+           //summonDialog();
+            levelGuideDialogPopUp();
+        //}
+        theory = findViewById(R.id.btn_test);
+        btnProfile = findViewById(R.id.imageView1);
+
        /* create = (Button) findViewById(R.id.btn_signup);
         txtlogin = (TextView) findViewById(R.id.input_email);
         txtpassword = (TextView) findViewById(R.id.input_password);
@@ -83,44 +97,155 @@ public class MainActivity extends Activity {
             }); */
 
 
-            theory.setOnClickListener(new View.OnClickListener() {
+        theory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    // theory.setEnabled(false);
+                    Intent intent = new Intent(getApplicationContext(), ChooseQuizActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    // theory.setEnabled(false);
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mMunuInflater = getMenuInflater();
+        mMunuInflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        /*if(item.getItemId() == R.id.action_settings){
+            //do settings
+        }*/
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Toast.makeText(MainActivity.this, "pressed settings", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_report_bug:
+                Toast.makeText(MainActivity.this, "report bug", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (imageUri != null) {
+            outState.putString(SAVED_INSTANCE_URI, imageUri.toString());
+            //outState.putString(SAVED_INSTANCE_RESULT, scanResults.getText().toString());
+        }
+        super.onSaveInstanceState(outState);
+    }
+    protected void summonDialog(){
+        final  AlertDialog alertDialog  = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Alert 3");
+        alertDialog.setMessage("00:10");
+        alertDialog.show();   //
+
+        new CountDownTimer(10000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                alertDialog.setMessage("00:"+ (millisUntilFinished/1000));
+            }
+
+            @Override
+            public void onFinish() {
+               // info.setVisibility(View.GONE);
+            }
+        }.start();
+
+
+    }
+    protected void levelGuideDialogPopUp(){
+        try {
+            final AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+            //mBuilder.setTitle("Choose Language..");
+            View mView = getLayoutInflater().inflate(R.layout.dialog_level_guide, null);
+            final TextView mainMessage = mView.findViewById(R.id.lvl_guide_info);
+
+
+            mBuilder.setView(mView);
+
+
+            final AlertDialog alertDialog = mBuilder.create();
+           /* LangEng.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
-                       // theory.setEnabled(false);
-                        Intent intent = new Intent(getApplicationContext(), ChooseQuizActivity.class);
-                        startActivity(intent);
+                        setLocale("en");
+                        recreate();
+                        dialog.dismiss();
+
                     } catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "Couldn't change language", Toast.LENGTH_SHORT).show();
+                        System.out.println("Couldn't change language");
                         e.printStackTrace();
                     }
                 }
-            });
+            });*/
 
+            alertDialog.show();
+            new CountDownTimer(10000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    mainMessage.setText("MEssage" +(millisUntilFinished/1000));
+                    //alertDialog.setMessage("00:"+ (millisUntilFinished/1000));
+                }
+
+                @Override
+                public void onFinish() {
+                    // info.setVisibility(View.GONE);
+                }
+            }.start();
+
+
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "Couldn't change language", Toast.LENGTH_SHORT).show();
+            System.out.println("Couldn't change language");
+            e.printStackTrace();
         }
 
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            if (imageUri != null) {
-                outState.putString(SAVED_INSTANCE_URI, imageUri.toString());
-                //outState.putString(SAVED_INSTANCE_RESULT, scanResults.getText().toString());
-            }
-            super.onSaveInstanceState(outState);
-        }
 
-    protected void setLocale(String s){
+    }
+
+    protected void setLocale(String s) {
         Locale locale = new Locale(s);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
         SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
-        editor.putString("def_lang",s);
+        editor.putString("def_lang", s);
         editor.apply();
 
     }
-    protected  void loadLocale(){
+
+    protected void loadLocale() {
         SharedPreferences prefs = getSharedPreferences("settings", Activity.MODE_PRIVATE);
-        String lang = prefs.getString("def_lang","");
+        String lang = prefs.getString("def_lang", "");
         setLocale(lang);
         def_lang = lang;
 
@@ -156,6 +281,20 @@ public class MainActivity extends Activity {
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    public boolean isFirstRun() {
+        boolean isFirstRun = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getBoolean("isFirstRun", true);
+        if (!isFirstRun)
+            return false;
+        else {// Place your dialog code here to display the dialog
+
+            getSharedPreferences("PREFERENCES", MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("isFirstRun", false)
+                    .apply();
+            return true;
+        }
     }
 
     private class Authenticate extends AsyncTask<String[], Void, String> {
@@ -252,8 +391,7 @@ public class MainActivity extends Activity {
             if (socket != null && !socket.isClosed()) {
                 try {
                     socket.close();
-                } catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace(System.err);
                 }
             }
@@ -270,27 +408,34 @@ public class MainActivity extends Activity {
             super.onPostExecute(result);
             theory.setEnabled(true);
             if (Err_Msg_Code == 0) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("own_name", username);
-                    intent.putExtra("own_id", id);
-                    startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("own_name", username);
+                intent.putExtra("own_id", id);
+                startActivity(intent);
 
             } else {
                 System.out.println("Post Exe ERR" + Err_Msg_Code);
                 switch (Err_Msg_Code) {
-                    case 1: Toast.makeText(MainActivity.this, "Email address already taken!", Toast.LENGTH_SHORT).show();
+                    case 1:
+                        Toast.makeText(MainActivity.this, "Email address already taken!", Toast.LENGTH_SHORT).show();
                         break;
-                    case 2: Toast.makeText(MainActivity.this, "User not found!", Toast.LENGTH_SHORT).show();
+                    case 2:
+                        Toast.makeText(MainActivity.this, "User not found!", Toast.LENGTH_SHORT).show();
                         break;
-                    case 3: Toast.makeText(MainActivity.this, "User not found!", Toast.LENGTH_SHORT).show();
+                    case 3:
+                        Toast.makeText(MainActivity.this, "User not found!", Toast.LENGTH_SHORT).show();
                         break;
-                    case 4: Toast.makeText(MainActivity.this, "User does not Have Sell permissions!", Toast.LENGTH_SHORT).show();
+                    case 4:
+                        Toast.makeText(MainActivity.this, "User does not Have Sell permissions!", Toast.LENGTH_SHORT).show();
                         break;
-                    case 5: Toast.makeText(MainActivity.this, "User does not Have Buy permissions!", Toast.LENGTH_SHORT).show();
+                    case 5:
+                        Toast.makeText(MainActivity.this, "User does not Have Buy permissions!", Toast.LENGTH_SHORT).show();
                         break;
-                    case 11: Toast.makeText(MainActivity.this, "No records yet..", Toast.LENGTH_SHORT).show();
+                    case 11:
+                        Toast.makeText(MainActivity.this, "No records yet..", Toast.LENGTH_SHORT).show();
                         break;
-                    default: Toast.makeText(MainActivity.this, "Unknown Error code: " + Err_Msg_Code, Toast.LENGTH_SHORT).show();
+                    default:
+                        Toast.makeText(MainActivity.this, "Unknown Error code: " + Err_Msg_Code, Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

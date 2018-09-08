@@ -35,5 +35,7 @@
         </activity>
         <activity android:name=".ChooseQuizActivity" android:windowSoftInputMode="stateHidden" >
         </activity>
+        <activity android:name=".SettingsActivity" android:windowSoftInputMode="stateHidden" >
+        </activity>
     </application>
 </manifest>

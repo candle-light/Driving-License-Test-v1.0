@@ -3,80 +3,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.badcompany.licensetest.MainActivity"
-    android:background="@color/colorPrimary1">
+    android:orientation="vertical"
+    tools:context="com.badcompany.licensetest.MainActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_bar">
+
+    </include>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:background="@color/colorPrimary6"
-        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:paddingEnd="30dp"
+        android:paddingTop="20dp"
+        android:gravity="end"
         android:orientation="vertical">
 
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/colorPrimary6"
-            android:gravity="right"
-            android:orientation="vertical">
-
-        <FrameLayout android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView1"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:contentDescription="@string/profile"
                 android:background="@drawable/manprofile"
-                android:src="@drawable/cstm_prf_border"
-                />
+                android:src="@drawable/cstm_prf_border" />
 
-            <TextView
-                android:id="@+id/textView1"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity= "left|bottom"
-                android:padding="5dp"
-                android:textColor="@android:color/white"
-                android:text="XXXX" />
+                android:layout_gravity="left|bottom"
+                android:paddingStart="5dp"
+                android:paddingBottom="5dp"
+                >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/level"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent" />
+            <TextView
+                android:id="@+id/txtLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_level"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent" />
+       </LinearLayout>
 
         </FrameLayout>
-        </LinearLayout>
-        <Button
-            android:id="@+id/btn_test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/cstm_btn_main"
-            android:text="@string/theory" />
-
-        <Button
-            android:id="@+id/btn_cats"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/cstm_btn_main"
-            android:text="@string/categories" />
-
-        <Button
-            android:id="@+id/btn_learn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/cstm_btn_main"
-            android:text="@string/learn" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cstm_btn_main"
+        android:elevation="10dp"
+        android:text="@string/theory" />
+
+    <Button
+        android:id="@+id/btn_cats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:elevation="10dp"
+        android:background="@drawable/cstm_btn_main"
+        android:text="@string/categories" />
+
+    <Button
+        android:id="@+id/btn_learn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:elevation="10dp"
+        android:background="@drawable/cstm_btn_main"
+        android:text="@string/learn" />
+
 </LinearLayout>

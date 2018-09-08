@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2:30"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
 
     </LinearLayout>
@@ -38,6 +38,7 @@
 
         <ImageView
             android:id="@+id/photo"
+            android:contentDescription="@string/question_descrp"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/sign"
@@ -60,8 +61,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/cstm_prf_border"
-            android:text="Question?"
-            android:textSize="20dp" />
+            android:text="@string/def_question"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <!--  ORANGE  -->
@@ -74,50 +75,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:orientation="vertical"
         android:background="@android:color/holo_orange_light"
         android:gravity="center_horizontal"
-        android:padding="10dp">
+        android:padding="25dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <Button
             android:id="@+id/btn_quizA"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
-            android:text="A"
-            android:textSize="25dp" />
+            android:text="@string/def_answer"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_quizB"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="B"
-            android:textSize="25dp" />
-
-    </LinearLayout>
-    <!--  YELLOW  -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@android:color/holo_orange_light"
-        android:gravity="center_horizontal"
-        android:padding="10dp">
+            android:text="@string/def_answer"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_quizC"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
-            android:text="C"
-            android:textSize="25dp" />
+            android:text="@string/def_answer"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_quizD"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="D"
-            android:textSize="25dp" />
+            android:text="@string/def_answer"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout></LinearLayout>
